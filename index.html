@@ -1,1 +1,26 @@
-<h1>Welcome!</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serverless Emailer</title>
+  </head>
+  <body>
+    <h1>Welcome</h1>
+    <form data-emailer="1" data-emailer-callback="complete">
+      <input type="text" placeholder="name" name="name">
+      <button type="submit">Send</button>
+    </form>
+    <script>
+      window.complete = (error) => {
+        if (error) {
+          console.error(error)
+          alert('Error!')
+        } else {
+          console.info('Success!')
+        }
+      }
+    </script>
+    <script src="client.js"></script>
+  </body>
+</html>
