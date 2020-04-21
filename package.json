@@ -1,0 +1,21 @@
+{
+  "name": "serverless-emailer",
+  "version": "1.0.0",
+  "description": "Serverless Email Service",
+  "main": "index.js",
+  "scripts": {
+    "start": "now dev",
+    "clean": "rm -rf pubilc/",
+    "build": "yarn clean ; mkdir public ; cp index.html client.js public/"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "prettier": "^2.0.4"
+  },
+  "repository": "git@github.com:ctrleffive/serverless-emailer.git",
+  "author": "Chandu J S <app.coder@outlook.in>",
+  "license": "MIT",
+  "private": true
+}
