@@ -27,6 +27,8 @@ module.exports = async (request, response) => {
       return {
         formId: dataSet[0],
         toEmail: dataSet[1],
+        fromString: dataSet[2],
+        subject: dataSet[3],
       }
     })
 
@@ -38,25 +40,20 @@ module.exports = async (request, response) => {
 
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      secure: process.env.SMTP_SECURE || false,
+      port: parseInt(process.env.SMTP_PORT),
+      secure: process.env.SMTP_SECURE === 'true',
       auth: {
         user: process.env.SMTP_USERNAME,
         pass: process.env.SMTP_PASSWORD,
       },
-      tls: {
-        ciphers: 'SSLv3',
-      },
     })
 
     await transporter.sendMail({
-      from:
-        process.env.FROM_STRING ||
-        '"Serverless Emailer" <noreply@indesignx.com>',
+      from: formSet.fromString,
       to: formSet.toEmail,
-      subject: 'New Form Submission',
-      text: request.body,
-      html: request.body,
+      subject: formSet.subject,
+      text: JSON.stringify(body.data),
+      html: JSON.stringify(body.data),
     })
 
     response.json({ success: true })
