@@ -57,12 +57,19 @@ gulp.task('pages', function () {
     .pipe(gulp.dest('./public'))
 })
 
+// Gulp task to copy all static files to public
+gulp.task('static', function () {
+  return gulp
+    .src(['./src/static/*'])
+    .pipe(gulp.dest('./public'))
+})
+
 // Clean output directory
 gulp.task('clean', () => del(['public']))
 
 gulp.task(
   'default',
-  gulp.series('clean', gulp.parallel('styles', 'scripts', 'pages'), (done) => {
+  gulp.series('clean', gulp.parallel('styles', 'scripts', 'pages', 'static'), (done) => {
     done()
   })
 )
