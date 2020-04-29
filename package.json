@@ -6,17 +6,22 @@
   "scripts": {
     "start": "now dev",
     "clean": "rm -rf pubilc/",
-    "build": "yarn clean ; mkdir public ; cp index.html client.js public/"
+    "build": "gulp"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
+    "gulp-uglify-es": "^2.0.0",
     "nodemailer": "^6.4.6"
   },
   "devDependencies": {
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-csso": "^4.0.1",
+    "gulp-htmlmin": "^5.0.1",
     "prettier": "^2.0.4"
   },
   "repository": "git@github.com:ctrleffive/serverless-emailer.git",
-  "author": "Chandu J S <app.coder@outlook.in>",
-  "license": "MIT",
+  "author": "Chandu J S",
   "private": true
 }
